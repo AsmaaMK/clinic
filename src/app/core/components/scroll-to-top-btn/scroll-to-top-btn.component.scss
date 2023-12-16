@@ -1,0 +1,7 @@
+#scroll-to-top-btn {
+  transform: scale(0);
+
+  &.show {
+    transform: scale(1);
+  }
+}

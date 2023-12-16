@@ -1,0 +1,55 @@
+{
+  "header": {
+    "home": "Home",
+    "login-doctor": "Login as a Doctor",
+    "login-patient": "Login as a Patient",
+    "signup-doctor": "Sign Up as a Doctor",
+    "signup-patient": "Sign Up as a Patient",
+    "lang": "عربي"
+  },
+  "home": {
+    "title": "Short Story About Mededin Clinic.",
+    "desc": "In the heart of Mededin city, the clinic captivates with its warm and professional atmosphere. Mededin Clinic is a haven for exceptional healthcare, where modern medicine meets personal care. The medical team stands out for their dedication and expertise, making each visit a unique experience. The clinic offers comprehensive services, including routine check-ups, medical consultations, and advanced treatments. Mededin Clinic is constantly striving to enhance the quality of healthcare and promote the well-being of the local community.",
+    "start": "Get started"
+  },
+  "form": {
+    "labels": {
+      "email": "Email address",
+      "password": "Password",
+      "name": "Full Name",
+      "specialty": "Specialty",
+      "phone": "Phone Number",
+      "dateOfBirth": "Date of birth",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female"
+    },
+    "errors": {
+      "email": "Invalid email, enter a valid one.",
+      "password": "Password must be at least 8 char.",
+      "name": "Name is required.",
+      "specialty": "Specialty is required.",
+      "phone": "Phone must be 11 digits.",
+      "dateOfBirth": "Date of birth is required",
+      "gender": "Gender is reqired."
+    }
+  },
+  "login": {
+    "as-doctor": "Login as a Doctor",
+    "as-patient": "Login as a Patient",
+    "remember": "Remember me",
+    "sign-in": "Sign in"
+  },
+  "signup": {
+    "doctor": "Create Doctor Account",
+    "patient": "Create Patient Account",
+    "create": "Create Account",
+    "have-account": "Aready have an account?",
+    "login": "Login here"
+  },
+  "toaster": {
+    "401-err": "Unauthorized, please login to continue",
+    "auth-err": "Unauthorized, please login to continue",
+    "signup-success": "Your account created successfully, Login to continue"
+  }
+}

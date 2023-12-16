@@ -1,0 +1,164 @@
+<section class="mh-screen flex justify-center items-center p-4">
+  <div
+    class="mb-10 flex w-full max-w-lg min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-white p-6 rounded-lg shadow-md"
+  >
+    <div class="">
+      <h2
+        class="mb-8 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+      >
+        {{ "signup.patient" | translate }}
+      </h2>
+
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()"
+        class="space-y-6"
+      >
+        <div>
+          <label for="name" class="block font-medium leading-6 text-gray-900">
+            {{ "form.labels.name" | translate }}
+          </label>
+          <div class="mt-2">
+            <input
+              id="name"
+              formControlName="name"
+              type="text"
+              autocomplete="name"
+              required
+              class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              [ngClass]="{
+                'is-valid': isFieldValid('name'),
+                'is-invalid': isFieldInvalid('name')
+              }"
+            />
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('name')">
+              {{ "form.errors.name" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label
+            for="dateOfBirth"
+            class="block font-medium leading-6 text-gray-900"
+          >
+            {{ "form.labels.dateOfBirth" | translate }}
+          </label>
+          <div class="mt-2">
+            <input
+              id="dateOfBirth"
+              formControlName="dateOfBirth"
+              type="date"
+              autocomplete="dateOfBirth"
+              required
+              class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              [ngClass]="{
+                'is-valid': isFieldValid('dateOfBirth'),
+                'is-invalid': isFieldInvalid('dateOfBirth')
+              }"
+            />
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('dateOfBirth')">
+              {{ "form.errors.dateOfBirth" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label for="gender" class="block font-medium leading-6 text-gray-900">
+            {{ "form.labels.gender" | translate }}
+          </label>
+          <div class="mt-2">
+            <select
+              id="gender"
+              formControlName="gender"
+              type="tel"
+              autocomplete="gender"
+              required
+              class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              [ngClass]="{
+                'is-valid': isFieldValid('gender'),
+                'is-invalid': isFieldInvalid('gender')
+              }"
+            >
+              <option value="male">{{ "form.labels.male" | translate }}</option>
+              <option value="female">
+                {{ "form.labels.female" | translate }}
+              </option>
+            </select>
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('gender')">
+              {{ "form.errors.gender" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label for="email" class="block font-medium leading-6 text-gray-900">
+            {{ "form.labels.email" | translate }}
+          </label>
+          <div class="mt-2">
+            <input
+              id="email"
+              formControlName="email"
+              type="email"
+              autocomplete="email"
+              required
+              class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              [ngClass]="{
+                'is-valid': isFieldValid('email'),
+                'is-invalid': isFieldInvalid('email')
+              }"
+            />
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('email')">
+              {{ "form.errors.email" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label
+            for="password"
+            class="block font-medium leading-6 text-gray-900"
+            >{{ "form.labels.password" | translate }}</label
+          >
+          <div class="mt-2">
+            <input
+              id="password"
+              formControlName="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              [ngClass]="{
+                'is-valid': isFieldValid('password'),
+                'is-invalid': isFieldInvalid('password')
+              }"
+            />
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('password')">
+              {{ "form.errors.password" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button
+            [loadingSpinner]="loading"
+            [disabled]="loading"
+            type="submit"
+            class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            {{ "signup.create" | translate }}
+          </button>
+        </div>
+      </form>
+
+      <p class="mt-10 text-center text-sm text-gray-500">
+        {{ "signup.have-account" | translate }}
+        <a
+          [routerLink]="['/login-patient']"
+          class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+          >{{ "signup.login" | translate }}</a
+        >
+      </p>
+    </div>
+  </div>
+</section>

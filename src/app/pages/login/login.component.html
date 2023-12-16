@@ -1,0 +1,89 @@
+<section class="mh-screen flex justify-center items-center p-4">
+  <div
+    class="mb-10 flex w-full max-w-lg min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-white p-6 rounded-lg shadow-md"
+  >
+    <div class="">
+      <h2
+        class="mb-8 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+      >
+        {{
+          (userType === "patients" ? "login.as-patient" : "login.as-doctor")
+            | translate
+        }}
+      </h2>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <div>
+          <label for="email" class="block font-medium leading-6 text-gray-900">
+            {{ "form.labels.email" | translate }}
+          </label>
+          <div class="mt-2">
+            <input
+              id="email"
+              formControlName="email"
+              type="email"
+              autocomplete="email"
+              required
+              class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              [ngClass]="{
+                'is-valid': isFieldValid('email'),
+                'is-invalid': isFieldInvalid('email')
+              }"
+            />
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('email')">
+              {{ "form.errors.email" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label
+            for="password"
+            class="block font-medium leading-6 text-gray-900"
+            >{{ "form.labels.password" | translate }}</label
+          >
+          <div class="mt-2">
+            <input
+              id="password"
+              formControlName="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              [ngClass]="{
+                'is-valid': isFieldValid('password'),
+                'is-invalid': isFieldInvalid('password')
+              }"
+            />
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('password')">
+              {{ "form.errors.password" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            [ngModel]="rememberMe"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-checkbox h-4 w-4"
+          />
+          <span class="text-gray-700 text-sm">{{
+            "login.remember" | translate
+          }}</span>
+        </label>
+
+        <div>
+          <button
+            [loadingSpinner]="loading"
+            [disabled]="loading"
+            type="submit"
+            class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            {{ "login.sign-in" | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
