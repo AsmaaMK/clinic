@@ -5,14 +5,23 @@ import {
 } from '@angular/core';
 import { provideServerRendering } from '@angular/platform-server';
 import { HttpLoaderFactory, appConfig } from './app.config';
-import { provideHttpClient, withFetch, HttpClient } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withFetch,
+  HttpClient,
+  withInterceptors,
+} from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { AuthInterceptorProvider } from './core/interceptors/auth.interceptor';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { errorInterceptor } from './core/interceptors/error.interceptor';
 
 const serverConfig: ApplicationConfig = {
   providers: [
     provideServerRendering(),
-    provideHttpClient(withFetch()),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([authInterceptor, errorInterceptor])
+    ),
     importProvidersFrom(
       TranslateModule.forRoot({
         defaultLanguage: 'en',
@@ -23,7 +32,6 @@ const serverConfig: ApplicationConfig = {
         },
       })
     ),
-    AuthInterceptorProvider,
   ],
 };
 

@@ -12,6 +12,8 @@ import { PatientChangePasswordComponent } from './pages/patient-profile/patient-
 import { SignUpPatientComponent } from './pages/sign-up-patient/sign-up-patient.component';
 import { CreateUpdateRecordComponent } from './pages/create-update-record/create-update-record.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { DoctorUpdateInfoComponent } from './pages/doctor-profile/doctor-update-info/doctor-update-info.component';
+import { PatientUpdateInfoComponent } from './pages/patient-profile/patient-update-info/patient-update-info.component';
 
 export const routes: Routes = [
   {
@@ -47,6 +49,10 @@ export const routes: Routes = [
         component: DoctorInfoComponent,
       },
       {
+        path: 'update-info',
+        component: DoctorUpdateInfoComponent,
+      },
+      {
         path: 'change-password',
         component: DoctorChangePasswordComponent,
       },
@@ -71,6 +77,10 @@ export const routes: Routes = [
       {
         path: 'info',
         component: PatientInfoComponent,
+      },
+      {
+        path: 'update-info',
+        component: PatientUpdateInfoComponent,
       },
       {
         path: 'change-password',
