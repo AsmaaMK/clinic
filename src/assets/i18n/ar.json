@@ -5,6 +5,9 @@
     "login-patient": "تسجيل الدخول كمريض",
     "signup-doctor": "انشئ حساب كطبيب",
     "signup-patient": "انشئ حساب كمريض",
+    "info": "الملف الشخصي",
+    "change-password": "تغيير كلمة المرور",
+    "records": "التسجيلات",
     "lang": "English"
   },
   "home": {

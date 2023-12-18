@@ -5,6 +5,9 @@
     "login-patient": "Login as a Patient",
     "signup-doctor": "Sign Up as a Doctor",
     "signup-patient": "Sign Up as a Patient",
+    "info": "Profile",
+    "change-password": "Change Password",
+    "records": "Records",
     "lang": "عربي"
   },
   "home": {

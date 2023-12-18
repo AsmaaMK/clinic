@@ -38,10 +38,10 @@
     <div class="hidden lg:flex lg:gap-x-12">
       <a
         *ngFor="let link of navLinks"
-        [routerLink]="[link]"
+        [routerLink]="[link.route]"
         [routerLinkActive]="'active'"
         class="nav-link font-semibold leading-6 text-gray-900"
-        >{{ "header." + link | translate }}</a
+        >{{ link.name | translate }}</a
       >
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -99,11 +99,11 @@
           <div class="space-y-2 py-6">
             <a
               *ngFor="let link of navLinks"
-              [routerLink]="[link]"
+              [routerLink]="[link.route]"
               (click)="closeMobileNav()"
               [routerLinkActive]="'bg-gray-100'"
               class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-              >{{ "header." + link | translate }}</a
+              >{{ link.name | translate }}</a
             >
           </div>
           <div class="py-6">

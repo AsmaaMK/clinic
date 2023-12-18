@@ -39,7 +39,6 @@ export class AuthGuard implements CanActivate {
 
       const cantActivateRoute = state.url;
       this.auth.redirectUrl$.next(cantActivateRoute);
-      console.log(cantActivateRoute);
 
       this.router.navigate([
         cantActivateRoute.includes('patient')
