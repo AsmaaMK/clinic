@@ -10,7 +10,7 @@ import { Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FormManage } from '../../core/classes/form-manage';
 import { LoadingDirective } from '../../core/directives/loading.directive';
-import { ToasterService } from '../../core/services/toaster.service';
+import { ToasterService } from '../../core/components/toaster/toaster.service';
 import { PatientsService } from '../../core/services/patients.service';
 
 @Component({

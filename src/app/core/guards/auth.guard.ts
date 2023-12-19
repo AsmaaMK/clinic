@@ -7,7 +7,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ToasterService } from '../services/toaster.service';
+import { ToasterService } from '../components/toaster/toaster.service';
 import { AuthService } from '../services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 

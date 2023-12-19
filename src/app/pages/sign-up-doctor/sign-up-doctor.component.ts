@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { FormManage } from '../../core/classes/form-manage';
-import { ToasterService } from '../../core/services/toaster.service';
+import { ToasterService } from '../../core/components/toaster/toaster.service';
 import { NgClass, NgIf } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LoadingDirective } from '../../core/directives/loading.directive';

@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ToasterService } from '../../services/toaster.service';
+import { ToasterService } from './toaster.service';
 import { NgClass, NgIf } from '@angular/common';
 
 @Component({

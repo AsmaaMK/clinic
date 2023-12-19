@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { ToasterService } from '../../core/services/toaster.service';
+import { ToasterService } from '../../core/components/toaster/toaster.service';
 import { FormManage } from '../../core/classes/form-manage';
 import {
   FormControl,
@@ -81,9 +81,10 @@ export class LoginComponent extends FormManage implements OnInit {
         .subscribe({
           next: () => {
             this.loading = false;
-            if (this.authService.redirectUrl$.value !== '/')
-              this.router.navigate([this.authService.redirectUrl$.value]);
-            else if (this.userType === 'doctors')
+            // if (this.authService.redirectUrl$.value !== '/')
+            //   this.router.navigate([this.authService.redirectUrl$.value]);
+            // else
+            if (this.userType === 'doctors')
               this.router.navigate(['doctor-profile/info']);
             else this.router.navigate(['patient-profile/info']);
           },
