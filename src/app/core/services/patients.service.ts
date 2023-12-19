@@ -68,32 +68,6 @@ export class PatientsService {
       );
   }
 
-  /**
-   * Change the password of the currently logged-in patient.
-   *
-   * @param oldPassword The old password of the patient.
-   * @param newPassword The new password for the patient.
-   * @returns An observable indicating the success of the password change.
-   */
-  changePassword(
-    oldPassword: string,
-    newPassword: string
-  ): Observable<Patient> {
-    return this.http
-      .patch<{
-        status: 'fail' | 'success';
-        data?: Patient;
-        message?: string;
-      }>(`${this.apiUrl}/changePassword`, {
-        oldPassword,
-        newPassword,
-      })
-      .pipe(
-        map((res) => res.data!!),
-        catchError(this.handleError)
-      );
-  }
-
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred';
 

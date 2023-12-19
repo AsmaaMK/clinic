@@ -14,6 +14,7 @@ import { LoadingDirective } from '../../core/directives/loading.directive';
 import { NgClass, NgIf } from '@angular/common';
 import { filter } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { UserType } from '../../core/models/user-type.model';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class LoginComponent extends FormManage implements OnInit {
   loginForm!: FormGroup;
-  userType!: 'doctors' | 'patients';
+  userType!: UserType;
   loading = false;
   rememberMe = true;
 

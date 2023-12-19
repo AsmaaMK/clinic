@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, BehaviorSubject, Observable, throwError, catchError } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 import { StorageService } from './storage.service';
+import { UserType } from '../models/user-type.model';
 
 export const USER_STORAGE_KEY = 'user-data';
 export const AUTH_REDIRECT_URL_KEY = 'redirect';
@@ -37,10 +38,18 @@ export class AuthService {
     return user;
   }
 
+  /**
+   *
+   * @param email
+   * @param password
+   * @param userType
+   * @param rememberMe
+   * @returns
+   */
   login(
     email: string,
     password: string,
-    userType: 'doctors' | 'patients',
+    userType: UserType,
     rememberMe: boolean
   ) {
     let loginUrl = `${this.apiUrl}/${userType}/login`;
@@ -61,6 +70,30 @@ export class AuthService {
       }),
       catchError(this.handleError)
     );
+  }
+
+  /**
+   * Change the password of the currently logged-in user.
+   *
+   * @param oldPassword The old password of the doctor.
+   * @param newPassword The new password for the doctor.
+   * @param userType The logged in user type (patients | doctors)
+   * @returns An observable indicating the success of the password change.
+   */
+  changePassword(
+    oldPassword: string,
+    newPassword: string,
+    userType: UserType
+  ): Observable<any> {
+    return this.http
+      .patch<any>(`${this.apiUrl}/${userType}/changePassword`, {
+        oldPassword,
+        newPassword,
+      })
+      .pipe(
+        map((res) => res.data!!),
+        catchError(this.handleError)
+      );
   }
 
   logout() {

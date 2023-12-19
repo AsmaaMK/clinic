@@ -31,9 +31,8 @@ import { NgClass, NgIf } from '@angular/common';
 export class DoctorUpdateInfoComponent extends FormManage {
   doctorInfo!: Doctor;
   gettingInfo = false;
-  showLogoutModal = false;
-  doctorInfoForm!: FormGroup;
   updatingInfo = false;
+  doctorInfoForm!: FormGroup;
 
   constructor(
     private toasterService: ToasterService,
