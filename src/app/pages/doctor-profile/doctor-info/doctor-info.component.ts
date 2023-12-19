@@ -6,11 +6,18 @@ import { DoctorsService } from '../../../core/services/doctors.service';
 import { LoadingDirective } from '../../../core/directives/loading.directive';
 import { NgClass } from '@angular/common';
 import { ConfirmPopupComponent } from '../../../core/components/confirm-popup/confirm-popup.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-doctor-info',
   standalone: true,
-  imports: [RouterLink, LoadingDirective, NgClass, ConfirmPopupComponent],
+  imports: [
+    RouterLink,
+    LoadingDirective,
+    NgClass,
+    ConfirmPopupComponent,
+    TranslateModule,
+  ],
   templateUrl: './doctor-info.component.html',
   styleUrl: './doctor-info.component.scss',
 })

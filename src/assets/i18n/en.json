@@ -1,4 +1,5 @@
 {
+  "loading": "loading...",
   "header": {
     "home": "Home",
     "login-doctor": "Login as a Doctor",
@@ -53,6 +54,16 @@
   "toaster": {
     "401-err": "Unauthorized, please login to continue",
     "auth-err": "Unauthorized, please login to continue",
-    "signup-success": "Your account created successfully, Login to continue"
+    "signup-success": "Your account created successfully, Login to continue",
+    "profile-updated": "Your data updated successfully"
+  },
+  "logout": {
+    "title": "Logout",
+    "desc": "Are you sure you want to logout?"
+  },
+  "btns": {
+    "save": "Save",
+    "edit": "Edit",
+    "cancel": "Cancel"
   }
 }

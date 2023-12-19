@@ -1,37 +1,9 @@
-@use "./typography";
-@use "./utilities";
+@use "./base";
+@use "./helpers/utilities";
 @use "./components";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-@layer base {
-  * {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    line-height: 1.2;
-  }
-
-  // reset
-
-  .container {
-    @apply mx-auto px-4;
-  }
-
-  input,
-  select {
-    outline: none;
-  }
-
-  select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 1px;
-    text-overflow: '';
-    background-color: white;
-    font-size: 1rem !important;
-  }
-}
+@layer base {}

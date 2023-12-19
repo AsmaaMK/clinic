@@ -1,4 +1,4 @@
-$nav-height: 96px;
+@use './variables' as *;
 
 .mh-screen {
   min-height: calc(100vh - $nav-height);

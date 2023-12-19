@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.container {
+  @apply mx-auto px-4;
+}
+
+input,
+select {
+  outline: none;
+  height: 38px;
+}
+
+select,
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  background-color: white;
+}
