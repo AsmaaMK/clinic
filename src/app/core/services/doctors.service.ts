@@ -14,6 +14,24 @@ export class DoctorsService {
   constructor(private http: HttpClient) {}
 
   /**
+   * Get all doctors (No auth needed)
+   *
+   * @returns An observable emitting array of all doctors
+   */
+  getAllDoctors(): Observable<Doctor[]> {
+    return this.http
+      .get<{
+        status: 'fail' | 'success';
+        data?: Doctor[];
+        message?: string;
+      }>(`${this.apiUrl}`)
+      .pipe(
+        map((res) => res.data!!),
+        catchError(this.handleError)
+      );
+  }
+
+  /**
    * Sign up a new doctor.
    *
    * @param doctorData The data of the doctor to sign up.
