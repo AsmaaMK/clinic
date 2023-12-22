@@ -1,11 +1,9 @@
 <div
-  class="relative -z-10"
+  #recordPopupContainer
+  class="relative"
   aria-labelledby="modal-title"
   role="dialog"
   aria-modal="true"
-  [ngClass]="{
-    'z-10': show,
-  }"
 >
   <div
     [ngClass]="{
@@ -19,117 +17,128 @@
     <div
       class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
     >
-      <form
-        [formGroup]="recordForm"
-        (ngSubmit)="onSubmit()"
+      <div
         [ngClass]="{
-          'opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95 ease-in duration-200': !show,
-          'opacity-100 translate-y-0 sm:scale-100 ease-out duration-300': show,
-        }"
+      'opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95 ease-in duration-200': !show,
+      'opacity-100 translate-y-0 sm:scale-100 ease-out duration-300': show,
+    }"
         class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
       >
-        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 flex flex-col gap-3">
-          <div class="mt-3 text-center sm:mt-0 sm:text-left">
-            <label
-              class="text-base font-semibold leading-6 text-gray-900"
-              id="modal-title"
-              for="sessionDate"
-            >
-              Session Date
-            </label>
-            <div class="mt-2">
-              <input
-                id="sessionDate"
-                formControlName="sessionDate"
-                type="date"
-                class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                [ngClass]="{
-                  'is-valid': isFieldValid('sessionDate'),
-                  'is-invalid': isFieldInvalid('sessionDate')
-                }"
-              />
-              <div
-                class="invalid-feedback"
-                *ngIf="isFieldInvalid('sessionDate')"
-              >
-                Session Date is required
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-3 text-center sm:mt-0 sm:text-left">
-            <label
-              class="text-base font-semibold leading-6 text-gray-900"
-              id="modal-title"
-              for="sessionDate"
-            >
-              Notes
-            </label>
-            <div class="mt-2">
-              <textarea
-                id="notes"
-                formControlName="notes"
-                class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Type your notes here..."
-                [ngClass]="{
-                  'is-valid': isFieldValid('notes'),
-                  'is-invalid': isFieldInvalid('notes')
-                }"
-                rows="3"
-              ></textarea>
-              <div class="invalid-feedback" *ngIf="isFieldInvalid('notes')">
-                Notes is required
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-3 text-center sm:mt-0 sm:text-left">
-            <label
-              class="text-base font-semibold leading-6 text-gray-900"
-              id="modal-title"
-              for="sessionDate"
-            >
-              Treatment
-            </label>
-            <div class="mt-2">
-              <textarea
-                id="treatment"
-                formControlName="treatment"
-                class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                placeholder="Type your treatment here..."
-                [ngClass]="{
-                  'is-valid': isFieldValid('treatment'),
-                  'is-invalid': isFieldInvalid('treatment')
-                }"
-                rows="3"
-              ></textarea>
-              <div class="invalid-feedback" *ngIf="isFieldInvalid('treatment')">
-                Treatment is required
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse gap-4 sm:px-6"
+        <form
+          *ngIf="recordForm"
+          [formGroup]="recordForm"
+          (ngSubmit)="onSubmit()"
         >
-          <button
-            type="button"
-            [loadingSpinner]="loading"
-            class="mt-3 inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset sm:mt-0 sm:w-auto"
-            type="submit"
+          <div
+            class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 flex flex-col gap-3"
           >
-            {{ createOrUpdate === "create" ? "Save Record" : "Update Record" }}
-          </button>
-          <button
-            type="button"
-            (click)="closePopup()"
-            class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+            <div class="mt-3 text-center sm:mt-0 sm:text-left">
+              <label
+                class="text-base font-semibold leading-6 text-gray-900"
+                id="modal-title"
+                for="sessionDate"
+              >
+                Session Date
+              </label>
+              <div class="mt-2">
+                <input
+                  id="sessionDate"
+                  formControlName="sessionDate"
+                  type="date"
+                  class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  [ngClass]="{
+                    'is-valid': isFieldValid('sessionDate'),
+                    'is-invalid': isFieldInvalid('sessionDate')
+                  }"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="isFieldInvalid('sessionDate')"
+                >
+                  Session Date is required
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-3 text-center sm:mt-0 sm:text-left">
+              <label
+                class="text-base font-semibold leading-6 text-gray-900"
+                id="modal-title"
+                for="sessionDate"
+              >
+                Notes
+              </label>
+              <div class="mt-2">
+                <textarea
+                  id="notes"
+                  formControlName="notes"
+                  class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="Type your notes here..."
+                  [ngClass]="{
+                    'is-valid': isFieldValid('notes'),
+                    'is-invalid': isFieldInvalid('notes')
+                  }"
+                  rows="3"
+                ></textarea>
+                <div class="invalid-feedback" *ngIf="isFieldInvalid('notes')">
+                  Notes is required
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-3 text-center sm:mt-0 sm:text-left">
+              <label
+                class="text-base font-semibold leading-6 text-gray-900"
+                id="modal-title"
+                for="sessionDate"
+              >
+                Treatment
+              </label>
+              <div class="mt-2">
+                <textarea
+                  id="treatment"
+                  formControlName="treatment"
+                  class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="Type your treatment here..."
+                  [ngClass]="{
+                    'is-valid': isFieldValid('treatment'),
+                    'is-invalid': isFieldInvalid('treatment')
+                  }"
+                  rows="3"
+                ></textarea>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="isFieldInvalid('treatment')"
+                >
+                  Treatment is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse gap-4 sm:px-6"
           >
-            Cancel
-          </button>
-        </div>
-      </form>
+            <button
+              type="button"
+              [loadingSpinner]="loading"
+              class="mt-3 inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset sm:mt-0 sm:w-auto"
+              type="submit"
+            >
+              {{
+                createOrUpdate === "create" ? "Save Record" : "Update Record"
+              }}
+            </button>
+            <button
+              type="button"
+              (click)="closePopup()"
+              class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

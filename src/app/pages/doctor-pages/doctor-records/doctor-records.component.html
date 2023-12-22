@@ -1,5 +1,5 @@
 <div class="container mx-auto my-6">
-  <div class="card flex gap-2 justify-between items-center">
+  <div class="card flex gap-2 justify-between items-center flex-wrap">
     <h1 class="text-lg font-medium">Recorded Appointments</h1>
     <button
       (click)="sendMessageToAll()"
@@ -96,11 +96,11 @@
   [patient]="patientToSendMessage"
 ></app-send-message-popup>
 
-@defer (when showRecordPopup) {
+<!-- @defer (when showRecordPopup) { -->
 <app-record-popup
   [(show)]="showRecordPopup"
   [createOrUpdate]="'update'"
   [record]="recordToUpdate"
 >
 </app-record-popup>
-}
+<!-- } -->

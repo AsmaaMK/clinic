@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
 
 @Component({
@@ -18,7 +26,30 @@ export class ConfirmPopupComponent {
   @Output() showChange = new EventEmitter<boolean>();
   @Output() onConfirm = new EventEmitter<boolean>();
 
-  constructor() {}
+  @ViewChild('confirmPopupContainer') confirmPopupContainer!: ElementRef;
+
+  ngAfterViewInit() {
+    this.confirmPopupContainer.nativeElement.classList.add('-z-10');
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['show']) {
+      if (changes['show'].currentValue)
+        this.confirmPopupContainer.nativeElement.classList.replace(
+          '-z-10',
+          'z-10'
+        );
+      else {
+        // waite for 400ms to set the class -z-10 to close the popup with animation
+        setTimeout(() => {
+          this.confirmPopupContainer.nativeElement.classList.replace(
+            'z-10',
+            '-z-10'
+          );
+        }, 400);
+      }
+    }
+  }
 
   confirm() {
     // Emit an event when the user confirms

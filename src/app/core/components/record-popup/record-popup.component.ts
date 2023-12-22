@@ -1,9 +1,14 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   Output,
   SimpleChanges,
+  ViewChild,
+  ViewChildren,
 } from '@angular/core';
 import {
   FormControl,
@@ -34,7 +39,10 @@ import { LoadingDirective } from '../../directives/loading.directive';
   templateUrl: './record-popup.component.html',
   styleUrl: './record-popup.component.scss',
 })
-export class RecordPopupComponent extends FormManage {
+export class RecordPopupComponent
+  extends FormManage
+  implements AfterViewInit, OnChanges
+{
   /**
    * required
    * */
@@ -56,6 +64,8 @@ export class RecordPopupComponent extends FormManage {
   @Input() show = false;
   @Output() showChange = new EventEmitter<boolean>();
 
+  @ViewChild('recordPopupContainer') recordPopupContainer!: ElementRef;
+
   loading = false;
   recordForm!: FormGroup;
   doctorId!: string;
@@ -69,10 +79,31 @@ export class RecordPopupComponent extends FormManage {
     super();
   }
 
+  ngAfterViewInit() {
+    this.recordPopupContainer?.nativeElement.classList.add('-z-10');
+  }
+
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['show'] && changes['show'].currentValue !== false) {
+    if (
+      changes['show'] &&
+      changes['show'].currentValue &&
+      this.recordPopupContainer
+    ) {
       this.initRecordForm();
       this.doctorId = this.authService.getUserDataFormStorage()._id;
+
+      this.recordPopupContainer?.nativeElement.classList.replace(
+        '-z-10',
+        'z-10'
+      );
+    } else if (!changes['show'].currentValue) {
+      // waite for 400ms to set the class -z-10 to close the popup with animation
+      setTimeout(() => {
+        this.recordPopupContainer?.nativeElement.classList.replace(
+          'z-10',
+          '-z-10'
+        );
+      }, 400);
     }
   }
 

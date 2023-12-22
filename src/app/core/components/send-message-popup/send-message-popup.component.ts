@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { RecordsService } from '../../services/records.service';
 import { ToasterService } from '../toaster/toaster.service';
 import { NgClass, NgIf } from '@angular/common';
@@ -32,6 +40,7 @@ export class SendMessagePopupComponent {
   @Input() show = false;
   @Output() showChange = new EventEmitter<boolean>();
 
+  @ViewChild('messagePopupContainer') messagePopupContainer!: ElementRef;
   message!: string | null;
   sending = false;
 
@@ -39,6 +48,29 @@ export class SendMessagePopupComponent {
     private recordService: RecordsService,
     private toaster: ToasterService
   ) {}
+
+  ngAfterViewInit() {
+    this.messagePopupContainer.nativeElement.classList.add('-z-10');
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['show']) {
+      if (changes['show'].currentValue)
+        this.messagePopupContainer.nativeElement.classList.replace(
+          '-z-10',
+          'z-10'
+        );
+      else {
+        // waite for 400ms to set the class -z-10 to close the popup with animation
+        setTimeout(() => {
+          this.messagePopupContainer.nativeElement.classList.replace(
+            'z-10',
+            '-z-10'
+          );
+        }, 400);
+      }
+    }
+  }
 
   sendToAll() {
     if (this.message) {
