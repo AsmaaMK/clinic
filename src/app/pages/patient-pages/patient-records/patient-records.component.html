@@ -1,1 +1,52 @@
-<p>patient-records works!</p>
+<div class="container mx-auto my-6">
+  <div
+    *ngIf="loading; else patientsTemplate"
+    class="flex flex-col gap-4 items-stretch"
+  >
+    <div
+      class="card flex gap-6 justify-between items-start flex-wrap"
+      *ngFor="let _ of [].constructor(4)"
+    >
+      <div class="flex flex-col gap-2 justify-start">
+        <div class="skeleton-loader h-6 w-60"></div>
+        <div class="skeleton-loader h-5 w-50"></div>
+        <div class="skeleton-loader h-5 w-40"></div>
+      </div>
+
+      <div class="skeleton-loader rounded-md h-9 w-40 mt-2"></div>
+    </div>
+  </div>
+
+  <ng-template #patientsTemplate>
+    <div class="flex flex-col gap-4 items-stretch">
+      <div
+        class="card flex gap-6 justify-between items-start flex-wrap"
+        *ngFor="let record of records"
+      >
+        <div class="flex flex-col gap-2">
+          <p>
+            <span class="font-medium">Date: </span>
+            <span>{{ record.sessionDate | date }}</span>
+          </p>
+
+          <p>
+            <span class="font-medium">Treatment: </span>
+            <span>{{ record.treatment }}</span>
+          </p>
+
+          <p>
+            <span class="font-medium">Notes: </span>
+            <span>{{ record.notes }}</span>
+          </p>
+        </div>
+
+        <a
+          [routerLink]="['/patient/record-details', record._id]"
+          class="btn btn-blue-outline font-medium text-sm px-3 text-center"
+        >
+          View Details →
+        </a>
+      </div>
+    </div>
+  </ng-template>
+</div>

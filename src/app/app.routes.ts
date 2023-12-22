@@ -13,6 +13,7 @@ import { SignUpPatientComponent } from './pages/sign-up-patient/sign-up-patient.
 import { AuthGuard } from './core/guards/auth.guard';
 import { DoctorUpdateInfoComponent } from './pages/doctor-pages/doctor-update-info/doctor-update-info.component';
 import { PatientUpdateInfoComponent } from './pages/patient-pages/patient-update-info/patient-update-info.component';
+import { PatientRecordDetailsComponent } from './pages/patient-pages/patient-record-details/patient-record-details.component';
 
 export const routes: Routes = [
   {
@@ -88,6 +89,10 @@ export const routes: Routes = [
       {
         path: 'records',
         component: PatientRecordsComponent,
+      },
+      {
+        path: 'record-details/:recordId',
+        component: PatientRecordDetailsComponent,
       },
     ],
   },
