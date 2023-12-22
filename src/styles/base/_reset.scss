@@ -13,6 +13,10 @@ select {
   height: 38px;
 }
 
+textarea {
+  outline: none;
+}
+
 select,
 input[type="date"] {
   appearance: none;

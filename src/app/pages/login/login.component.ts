@@ -86,8 +86,8 @@ export class LoginComponent extends FormManage implements OnInit {
             //   this.router.navigate([this.authService.redirectUrl$.value]);
             // else
             if (this.userType === 'doctors')
-              this.router.navigate(['doctor-profile/info']);
-            else this.router.navigate(['patient-profile/info']);
+              this.router.navigate(['doctor/info']);
+            else this.router.navigate(['patient/info']);
           },
           error: (err) => {
             this.loading = false;

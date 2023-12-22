@@ -9,6 +9,7 @@
     "info": "Profile",
     "change-password": "Change Password",
     "records": "Records",
+    "patients": "Patients",
     "lang": "عربي"
   },
   "home": {
@@ -68,5 +69,9 @@
     "save": "Save Changes",
     "edit": "Edit",
     "cancel": "Cancel"
+  },
+  "patient": {
+    "female": "Female",
+    "male": "Male"
   }
 }

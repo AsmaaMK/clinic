@@ -1,0 +1,106 @@
+<div class="container mx-auto my-6">
+  <div class="card flex gap-2 justify-between items-center">
+    <h1 class="text-lg font-medium">Recorded Appointments</h1>
+    <button
+      (click)="sendMessageToAll()"
+      class="btn btn-blue text-center mt-auto text-base"
+    >
+      Send Message To All Patients
+    </button>
+  </div>
+</div>
+
+<div class="container mx-auto my-6">
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 gap-4"
+    *ngIf="loading; else patientsTemplate"
+  >
+    <div class="card flex flex-col gap-2" *ngFor="let _ of [].constructor(8)">
+      <div class="skeleton-loader h-6"></div>
+      <div class="skeleton-loader h-5 w-1/2"></div>
+      <div class="skeleton-loader h-5 w-3/4"></div>
+      <div class="skeleton-loader h-5 w-1/2"></div>
+
+      <div class="skeleton-loader rounded-md h-9 mt-2"></div>
+    </div>
+  </div>
+
+  <ng-template #patientsTemplate>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 gap-4"
+    >
+      <div class="card flex flex-col gap-2" *ngFor="let record of records">
+        <p class="font-medium capitalize flex gap-2">
+          <span class="font-medium">Patient: </span>
+          <span>{{ record.patientId.name }}</span>
+
+          <button
+            (click)="openRecordPopup(record)"
+            title="Edit Record"
+            class="text-gray-400 hover:text-indigo-600 ms-auto transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              style="width: 24px; height: 24px"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 18.89H6.41421L15.7279 9.57627L14.3137 8.16206L5 17.4758V18.89ZM21 20.89H3V16.6473L16.435 3.21231C16.8256 2.82179 17.4587 2.82179 17.8492 3.21231L20.6777 6.04074C21.0682 6.43126 21.0682 7.06443 20.6777 7.45495L9.24264 18.89H21V20.89ZM15.7279 6.74785L17.1421 8.16206L18.5563 6.74785L17.1421 5.33363L15.7279 6.74785Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </button>
+        </p>
+
+        <p>
+          <span class="font-medium">Date: </span>
+          <span>{{ record.sessionDate | date }}</span>
+        </p>
+
+        <p>
+          <span class="font-medium">Treatment: </span>
+          <span>{{ record.treatment }}</span>
+        </p>
+
+        <p>
+          <span class="font-medium">Notes: </span>
+          <span>{{ record.notes }}</span>
+        </p>
+
+        <p class="flex gap-2 mb-2">
+          <span class="badge {{ record.patientId.gender }} text-sm">
+            {{ "patient." + record.patientId.gender | translate }}
+          </span>
+          <span
+            *ngIf="record.patientId.dateOfBirth | age"
+            class="badge text-sm"
+          >
+            {{ record.patientId.dateOfBirth | age }}
+          </span>
+        </p>
+
+        <button
+          (click)="sendMessageToPatient(record.patientId)"
+          class="btn btn-blue-outline w-full font-medium text-sm text-center mt-auto"
+        >
+          Send Message
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<app-send-message-popup
+  [(show)]="showMessagePopup"
+  [sendTo]="sendTo"
+  [patient]="patientToSendMessage"
+></app-send-message-popup>
+
+@defer (when showRecordPopup) {
+<app-record-popup
+  [(show)]="showRecordPopup"
+  [createOrUpdate]="'update'"
+  [record]="recordToUpdate"
+>
+</app-record-popup>
+}

@@ -7,7 +7,7 @@ import { StorageService } from './storage.service';
   providedIn: 'root',
 })
 export class LangService {
-  currentLang$: BehaviorSubject<string> = new BehaviorSubject(
+  currentLang$: BehaviorSubject<'ar' | 'en'> = new BehaviorSubject(
     this.getInitialLang()
   );
 
@@ -16,14 +16,14 @@ export class LangService {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  getInitialLang(): string {
+  getInitialLang(): 'ar' | 'en' {
     if (isPlatformBrowser(this.platformId)) {
       let storedLang = this.storageService.getLocalStorageValue('lang');
       if (storedLang) return storedLang;
       return 'en';
     }
 
-    return '';
+    return 'en';
   }
 
   getLang(): string {

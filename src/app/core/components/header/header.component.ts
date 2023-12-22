@@ -19,18 +19,19 @@ const AUTH_NAV_LINKS: NavLink[] = [
 ];
 
 const PATIENT_NAV_LINKS: NavLink[] = [
-  { name: 'header.info', route: 'patient-profile/info' },
-  // { name: 'header.update-info', route: 'patient-profile/update-info' },
-  { name: 'header.change-password', route: 'patient-profile/change-password' },
-  { name: 'header.records', route: 'patient-profile/records' },
+  { name: 'header.info', route: 'patient/info' },
+  // { name: 'header.update-info', route: 'patient/update-info' },
+  { name: 'header.change-password', route: 'patient/change-password' },
+  { name: 'header.records', route: 'patient/records' },
 ];
 
 const DOCTOR_NAV_LINKS: NavLink[] = [
-  { name: 'header.info', route: 'doctor-profile/info' },
-  // { name: 'header.update-info', route: 'doctor-profile/update-info' },
-  { name: 'header.change-password', route: 'doctor-profile/change-password' },
-  { name: 'header.records', route: 'doctor-profile/records' },
-  // { name: 'header.create-record', route: 'doctor-profile/create-record' },
+  { name: 'header.info', route: 'doctor/info' },
+  // { name: 'header.update-info', route: 'doctor/update-info' },
+  { name: 'header.change-password', route: 'doctor/change-password' },
+  { name: 'header.patients', route: 'doctor/patients' },
+  { name: 'header.records', route: 'doctor/records' },
+  // { name: 'header.create-record', route: 'doctor/create-record' },
 ];
 
 @Component({

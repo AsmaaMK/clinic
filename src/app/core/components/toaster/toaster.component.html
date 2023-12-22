@@ -4,7 +4,7 @@
     'bg-green-200 text-green-800': status === 'success',
     'bg-red-200 text-red-800': status === 'error'
   }"
-  class="fixed top-6 right-6 p-4 w-[80vw] max-w-xs rounded-md shadow-md flex gap-4"
+  class="fixed z-50 top-6 right-6 p-4 w-[80vw] max-w-xs rounded-md shadow-md flex gap-4"
 >
   <svg
     *ngIf="status === 'error'"

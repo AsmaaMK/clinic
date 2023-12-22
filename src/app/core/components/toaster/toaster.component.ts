@@ -21,7 +21,7 @@ export class ToasterComponent implements OnDestroy {
 
       if (val) {
         this.status = val.status;
-        setTimeout(() => this.clearToast(), 10000); // Auto-close after 10 secods
+        setTimeout(() => this.clearToast(), 3000); // Auto-close after 3 secods
       }
     });
   }

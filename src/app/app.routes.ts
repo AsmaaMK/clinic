@@ -2,18 +2,17 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpDoctorComponent } from './pages/sign-up-doctor/sign-up-doctor.component';
-import { DoctorPatientsComponent } from './pages/doctor-profile/doctor-patients/doctor-patients.component';
-import { DoctorRecordsComponent } from './pages/doctor-profile/doctor-records/doctor-records.component';
-import { PatientRecordsComponent } from './pages/patient-profile/patient-records/patient-records.component';
-import { DoctorInfoComponent } from './pages/doctor-profile/doctor-info/doctor-info.component';
-import { DoctorChangePasswordComponent } from './pages/doctor-profile/doctor-change-password/doctor-change-password.component';
-import { PatientInfoComponent } from './pages/patient-profile/patient-info/patient-info.component';
-import { PatientChangePasswordComponent } from './pages/patient-profile/patient-change-password/patient-change-password.component';
+import { PatientsComponent } from './pages/doctor-pages/patients/patients.component';
+import { DoctorRecordsComponent } from './pages/doctor-pages/doctor-records/doctor-records.component';
+import { PatientRecordsComponent } from './pages/patient-pages/patient-records/patient-records.component';
+import { DoctorInfoComponent } from './pages/doctor-pages/doctor-info/doctor-info.component';
+import { DoctorChangePasswordComponent } from './pages/doctor-pages/doctor-change-password/doctor-change-password.component';
+import { PatientInfoComponent } from './pages/patient-pages/patient-info/patient-info.component';
+import { PatientChangePasswordComponent } from './pages/patient-pages/patient-change-password/patient-change-password.component';
 import { SignUpPatientComponent } from './pages/sign-up-patient/sign-up-patient.component';
-import { CreateUpdateRecordComponent } from './pages/create-update-record/create-update-record.component';
 import { AuthGuard } from './core/guards/auth.guard';
-import { DoctorUpdateInfoComponent } from './pages/doctor-profile/doctor-update-info/doctor-update-info.component';
-import { PatientUpdateInfoComponent } from './pages/patient-profile/patient-update-info/patient-update-info.component';
+import { DoctorUpdateInfoComponent } from './pages/doctor-pages/doctor-update-info/doctor-update-info.component';
+import { PatientUpdateInfoComponent } from './pages/patient-pages/patient-update-info/patient-update-info.component';
 
 export const routes: Routes = [
   {
@@ -37,11 +36,11 @@ export const routes: Routes = [
     component: SignUpPatientComponent,
   },
   {
-    path: 'doctor-profile',
+    path: 'doctor',
     canActivate: [AuthGuard],
     loadComponent: () =>
-      import('./pages/doctor-profile/doctor-profile.component').then(
-        (x) => x.DoctorProfileComponent
+      import('./pages/doctor-pages/doctor-pages.component').then(
+        (x) => x.DoctorComponent
       ),
     children: [
       {
@@ -58,7 +57,7 @@ export const routes: Routes = [
       },
       {
         path: 'patients',
-        component: DoctorPatientsComponent,
+        component: PatientsComponent,
       },
       {
         path: 'records',
@@ -67,11 +66,11 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'patient-profile',
+    path: 'patient',
     canActivate: [AuthGuard],
     loadComponent: () =>
-      import('./pages/patient-profile/patient-profile.component').then(
-        (x) => x.PatientProfileComponent
+      import('./pages/patient-pages/patient-pages.component').then(
+        (x) => x.PatientComponent
       ),
     children: [
       {
@@ -91,15 +90,5 @@ export const routes: Routes = [
         component: PatientRecordsComponent,
       },
     ],
-  },
-  {
-    path: 'create-record',
-    canActivate: [AuthGuard],
-    component: CreateUpdateRecordComponent,
-  },
-  {
-    path: 'update-record/:recordId',
-    canActivate: [AuthGuard],
-    component: CreateUpdateRecordComponent,
   },
 ];

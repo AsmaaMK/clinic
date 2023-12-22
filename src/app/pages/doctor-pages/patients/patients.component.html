@@ -1,0 +1,52 @@
+<div class="container mx-auto my-6">
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 gap-4"
+    *ngIf="loading; else patientsTemplate"
+  >
+    <div class="card flex flex-col gap-2" *ngFor="let _ of [].constructor(8)">
+      <div class="skeleton-loader h-6"></div>
+      <div class="skeleton-loader h-5 w-1/2"></div>
+      <div class="skeleton-loader h-5 w-3/4"></div>
+
+      <div class="skeleton-loader rounded-md h-9 mt-2"></div>
+    </div>
+  </div>
+
+  <ng-template #patientsTemplate>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 gap-4"
+    >
+      <div class="card flex flex-col gap-2" *ngFor="let patient of patients">
+        <p class="font-medium capitalize text-lg">{{ patient.name }}</p>
+
+        <p>
+          <span class="font-medium">Gender:</span>
+          <span class="badge {{ patient.gender }} text-sm ms-2">
+            {{ "patient." + patient.gender | translate }}
+          </span>
+        </p>
+
+        <p *ngIf="patient.dateOfBirth | age" class="mb-2">
+          <span class="font-medium">Age:</span>
+          <span class="badge text-sm ms-2">
+            {{ patient.dateOfBirth | age }}
+          </span>
+        </p>
+
+        <button
+          (click)="openRecordPopup(patient._id)"
+          class="btn btn-blue-outline w-full text-sm text-center mt-auto"
+        >
+          Record Appointment
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<app-record-popup
+  [(show)]="showRecordPopup"
+  [createOrUpdate]="'create'"
+  [patientId]="patientIdToCreateRecord"
+>
+</app-record-popup>
