@@ -7,7 +7,9 @@
       <p class="mt-6 text-lg leading-8 text-gray-600">
         {{ "home.desc" | translate }}
       </p>
-      <div class="mt-10 flex items-center justify-center gap-x-6">
+      <div
+        class="mt-10 flex items-center justify-center flex-wrap gap-4 gap-x-6"
+      >
         <a [routerLink]="['/login-doctor']" class="btn-blue"
           >{{ "header.login-doctor" | translate }}
         </a>
