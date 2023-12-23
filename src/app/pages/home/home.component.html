@@ -8,8 +8,11 @@
         {{ "home.desc" | translate }}
       </p>
       <div class="mt-10 flex items-center justify-center gap-x-6">
-        <a [routerLink]="['login']" class="btn-blue"
-          >{{ "home.start" | translate }}
+        <a [routerLink]="['/login-doctor']" class="btn-blue"
+          >{{ "header.login-doctor" | translate }}
+        </a>
+        <a [routerLink]="['/login-patient']" class="btn-green">
+          {{ "header.login-patient" | translate }}
         </a>
       </div>
     </div>
